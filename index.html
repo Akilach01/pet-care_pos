@@ -6,22 +6,32 @@
     <title>PetCare POS - Phase 1</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
-       body {
-  background-color: #f8f9fa;
-  background-image: url('https://images.unsplash.com/photo-1558788353-f76d92427f16');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
+        body {
+          background-color: #f5ece5;
+        }
+      
+        .section-products {
+          background-color: #e8d4be;
+        }
+      
+        .section-sales {
+          background-color: #e6f4f1;
+        }
+      
+        .section-customers {
+          background-color: #f3e6ff;
+        }
+      
         .card {
-            border-radius: 1rem;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+          border-radius: 1rem;
+          box-shadow: 0 0 10px rgba(0,0,0,0.05);
         }
+      
         .nav-tabs .nav-link.active {
-            background-color: #e3f2fd;
+          background-color: #e3f2fd;
         }
-    </style>
+      </style>
+      
 </head>
 <body>
 <div class="container py-4">
@@ -41,7 +51,7 @@
     <div class="tab-content pt-3" id="posTabContent">
 
         <!-- Products Tab -->
-        <div class="tab-pane fade show active" id="products" role="tabpanel">
+        <div class="tab-pane fade show active section-products" id="products" role="tabpanel">
             <div class="card p-3">
                 <h5>Product Management</h5>
                 <form id="productForm" class="row g-2">
@@ -77,7 +87,7 @@
         </div>
 
         <!-- Sales Tab -->
-        <div class="tab-pane fade" id="sales" role="tabpanel">
+        <div class="tab-pane fade section-sales" id="sales" role="tabpanel">
             <div class="card p-3">
                 <h5>POS Sales</h5>
                 <p class="text-muted">This section will handle the checkout cart, invoice, and payment method.</p>
@@ -86,7 +96,7 @@
         </div>
 
         <!-- Customers Tab -->
-        <div class="tab-pane fade" id="customers" role="tabpanel">
+        <div class="tab-pane fade section-customers" id="customers" role="tabpanel">
             <div class="card p-3">
                 <h5>Customer Management</h5>
                 <form id="customerForm" class="row g-2">
@@ -121,7 +131,7 @@
 </div>
 
 <script>
-    // PRODUCTS SECTION
+    // PRODUCTS
     const productForm = document.getElementById("productForm");
     const productTable = document.querySelector("#productTable tbody");
     const productNameInput = document.getElementById("productName");
@@ -143,6 +153,7 @@
         editingProductRow.cells[1].innerText = price;
         editingProductRow.cells[2].innerText = stock;
         editingProductRow.cells[3].innerText = sku;
+        alert("✅ Product updated successfully!");
         editingProductRow = null;
         productForm.querySelector("button[type='submit']").textContent = "Add Product";
       } else {
@@ -166,7 +177,9 @@
     productTable.addEventListener("click", function (e) {
       const row = e.target.closest("tr");
       if (e.target.classList.contains("btn-danger")) {
-        row.remove();
+        if (confirm("Are you sure you want to delete this product?")) {
+          row.remove();
+        }
       }
       if (e.target.classList.contains("btn-warning")) {
         editingProductRow = row;
@@ -178,7 +191,7 @@
       }
     });
   
-    // CUSTOMERS SECTION
+    // CUSTOMERS
     const customerForm = document.getElementById("customerForm");
     const customerTable = document.querySelector("#customerTable tbody");
     const customerNameInput = document.getElementById("customerName");
@@ -197,6 +210,7 @@
         editingCustomerRow.cells[0].innerText = name;
         editingCustomerRow.cells[1].innerText = email;
         editingCustomerRow.cells[2].innerText = phone;
+        alert("✅ Customer updated successfully!");
         editingCustomerRow = null;
         customerForm.querySelector("button[type='submit']").textContent = "Add";
       } else {
@@ -219,7 +233,9 @@
     customerTable.addEventListener("click", function (e) {
       const row = e.target.closest("tr");
       if (e.target.classList.contains("btn-danger")) {
-        row.remove();
+        if (confirm("Are you sure you want to delete this customer?")) {
+          row.remove();
+        }
       }
       if (e.target.classList.contains("btn-warning")) {
         editingCustomerRow = row;
@@ -230,8 +246,8 @@
       }
     });
   </script>
-  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
   
 </body>
 </html>
