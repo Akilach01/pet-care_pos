@@ -1,128 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PetCare POS - Phase 1</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-      
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PetCare POS - Phase 1</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
-
 <body>
 <div class="container py-4">
-    <h2 class="mb-4">EPetHub POS - Sellers Dashboard</h2>
-    <ul class="nav nav-tabs" id="posTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="products-tab" data-bs-toggle="tab" data-bs-target="#products" type="button">Products</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="sales-tab" data-bs-toggle="tab" data-bs-target="#sales" type="button">Sales</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="customers-tab" data-bs-toggle="tab" data-bs-target="#customers" type="button">Customers</button>
-        </li>
-    </ul>
+  <h2 class="mb-4">EPetHub POS - Sellers Dashboard</h2>
+  <ul class="nav nav-tabs" id="posTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="products-tab" data-bs-toggle="tab" data-bs-target="#products" type="button">Products</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="sales-tab" data-bs-toggle="tab" data-bs-target="#sales" type="button">Sales</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="customers-tab" data-bs-toggle="tab" data-bs-target="#customers" type="button">Customers</button>
+    </li>
+  </ul>
 
-    <div class="tab-content pt-3" id="posTabContent">
+  <div class="tab-content pt-3" id="posTabContent">
 
-        <!-- Products Tab -->
-        <div class="tab-pane fade show active section-products" id="products" role="tabpanel">
-            <div class="card p-3">
-                <h5>Product Management</h5>
-                <form id="productForm" class="row g-2">
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Product Name" id="productName" required />
-                    </div>
-                    <div class="col-md-2">
-                        <input type="number" class="form-control" placeholder="Price" id="productPrice" required />
-                    </div>
-                    <div class="col-md-2">
-                        <input type="number" class="form-control" placeholder="Stock" id="productStock" required />
-                    </div>
-                    <div class="col-md-2">
-                        <input type="text" class="form-control" placeholder="SKU" id="productSKU" required />
-                    </div>
-                    <div class="col-md-2">
-                        <button type="submit" class="btn btn-primary w-100">Add Product</button>
-                    </div>
-                </form>
-                <table class="table table-bordered mt-3" id="productTable">
-                    <thead class="table-light">
-                      <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Stock</th>
-                        <th>SKU</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody></tbody>
-                  </table>                  
-            </div>
-        </div>
+    <!-- Products Tab -->
+    <div class="tab-pane fade show active section-products" id="products" role="tabpanel">
+      <div class="card p-3">
+        <h5>Product Management</h5>
+        <form id="productForm" class="row g-2">
+          <div class="col-md-4"><input type="text" class="form-control" placeholder="Product Name" id="productName" required/></div>
+          <div class="col-md-2"><input type="number" class="form-control" placeholder="Price" id="productPrice" required/></div>
+          <div class="col-md-2"><input type="number" class="form-control" placeholder="Stock" id="productStock" required/></div>
+          <div class="col-md-2"><input type="text" class="form-control" placeholder="SKU" id="productSKU" required/></div>
+          <div class="col-md-2"><button type="submit" class="btn btn-primary w-100">Add Product</button></div>
+        </form>
+        <table class="table table-bordered mt-3" id="productTable">
+          <thead class="table-light">
+          <tr>
+            <th>Name</th><th>Price</th><th>Stock</th><th>SKU</th><th>Actions</th>
+          </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
 
-         <!-- Sales Tab -->
-<div class="tab-pane fade section-sales" id="sales" role="tabpanel">
-    <div class="card p-3">
+    <!-- Sales Tab -->
+    <div class="tab-pane fade section-sales" id="sales" role="tabpanel">
+      <div class="card p-3">
         <h5>POS Sales</h5>
         <div class="row">
-            <!-- Product Grid -->
-            <div class="col-md-8">
-                <h6>Products</h6>
-                <div id="product-grid" class="row g-3"></div>
-            </div>
+          <!-- Product Grid -->
+          <div class="col-md-8">
+            <h6>Products</h6>
+            <div id="product-grid" class="row g-3"></div>
+          </div>
 
-            <!-- Cart -->
-            <div class="col-md-4">
-                <i class="fa-regular fa-cart-shopping"></i>
-                <div id="cart-items" class="border rounded p-2" style="max-height: 400px; overflow-y: auto;"></div>
-                <div class="mt-2">
-                    <strong>Total: $<span id="total-price">0</span></strong>
-                    <button class="btn btn-warning w-100 mt-2" onclick="checkout()">Checkout</button>
-                </div>
+          <!-- Cart -->
+          <div class="col-md-4">
+            <div class="border rounded p-2 mb-3" style="max-height: 300px; overflow-y: auto;">
+                <h6><i class="fa fa-shopping-cart me-2"></i>Cart</h6>
+              <div id="cart-items"></div>
             </div>
+            <div class="mb-2">
+              <label class="form-label">Subtotal: $<span id="subtotal">0</span></label><br/>
+              <label class="form-label">Discount (%):</label>
+              <input type="number" class="form-control mb-2" id="discount" min="0" max="100" value="0" oninput="updateCheckout()"/>
+              <label class="form-label">Total: $<span id="total-price">0</span></label><br/>
+              <label class="form-label"> Paid ($):</label>
+              <input type="number" class="form-control mb-2" id="paidAmount" oninput="updateCheckout()"/>
+              <label class="form-label">Balance $<span id="balance">0</span></label><br/>
+              <label class="form-label">Points Earned: <span id="points">0</span></label>
+            </div>
+            <button class="btn btn-warning w-100 mt-2" onclick="checkout()">Checkout</button>
+          </div>
         </div>
+      </div>
     </div>
-</div>    
-   
 
-        <!-- Customers Tab -->
-        <div class="tab-pane fade section-customers" id="customers" role="tabpanel">
-            <div class="card p-3">
-                <h5>Customer Management</h5>
-                <form id="customerForm" class="row g-2">
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Customer Name" id="customerName" required />
-                    </div>
-                    <div class="col-md-4">
-                        <input type="email" class="form-control" placeholder="Email" id="customerEmail" required />
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" placeholder="Phone" id="customerPhone" required />
-                    </div>
-                    <div class="col-md-1">
-                        <button type="submit" class="btn btn-success w-100">Add</button>
-                    </div>
-                </form>
-                <table class="table table-bordered mt-3" id="customerTable">
-                    <thead class="table-light">
-                      <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody></tbody>
-                  </table>                  
-            </div>
-        </div>
-
+    <!-- Customers Tab -->
+    <div class="tab-pane fade section-customers" id="customers" role="tabpanel">
+      <div class="card p-3">
+        <h5>Customer Management</h5>
+        <form id="customerForm" class="row g-2">
+          <div class="col-md-4"><input type="text" class="form-control" placeholder="Customer Name" id="customerName" required /></div>
+          <div class="col-md-4"><input type="email" class="form-control" placeholder="Email" id="customerEmail" required /></div>
+          <div class="col-md-3"><input type="text" class="form-control" placeholder="Phone" id="customerPhone" required /></div>
+          <div class="col-md-1"><button type="submit" class="btn btn-success w-100">Add</button></div>
+        </form>
+        <table class="table table-bordered mt-3" id="customerTable">
+          <thead class="table-light">
+          <tr><th>Name</th><th>Email</th><th>Phone</th><th>Actions</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
+
+  </div>
 </div>
 
-   <script src="app.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
