@@ -84,6 +84,12 @@ body {
     border-bottom: 1px solid #ddd;
     padding: 0.5rem 0;
   }
+
+
+  .card-img-top {
+    border-bottom: 1px solid #eee;
+  }
+  
   
   .cart-summary {
     margin-top: 1rem;
